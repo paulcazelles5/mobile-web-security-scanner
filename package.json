@@ -1,0 +1,9 @@
+{
+  "name": "mobile-web-security-scanner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A small web security header scanner with a mobile-friendly interface.",
+  "type": "module",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=20" }
+}
