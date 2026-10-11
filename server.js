@@ -73,7 +73,7 @@ function analyze({response,url,redirects,body,truncated=false}) {
     else add(severity,"Missing "+name,"The response does not include the "+name+" header.",fix);
   }
   if(!https) add("high","Page uses HTTP","The final URL is not encrypted with HTTPS.","Enable HTTPS and redirect HTTP traffic to HTTPS.");
-  if(h.get("server")) add("info","Server banner exposed","Server: "+h.get("server),"Consider reducing unnecessary server/version details.");
+  if(h.get("server")) add("info","Server banner exposed","Server: "+h.get("server"),"Consider reducing unnecessary server/version details.");
   if(h.get("x-powered-by")) add("low","Technology banner exposed","X-Powered-By: "+h.get("x-powered-by"),"Remove X-Powered-By if it reveals unnecessary details.");
   const cookies=typeof h.getSetCookie==="function"?h.getSetCookie():(h.get("set-cookie")?[h.get("set-cookie")]:[]);
   for(const c of cookies){const n=(c.split("=")[0]||"cookie").trim(),l=c.toLowerCase();
