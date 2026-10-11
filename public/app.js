@@ -76,3 +76,46 @@ document.querySelector("#export").addEventListener("click", () => {
   link.click();
   URL.revokeObjectURL(url);
 });
+
+
+const labButton = document.querySelector("#search-labs");
+const labResults = document.querySelector("#lab-results");
+const practiceLabs = [
+  {
+    name: "PortSwigger Web Security Academy",
+    type: "Free guided labs",
+    description: "Interactive lessons for common web vulnerabilities in a purpose-built training environment.",
+    url: "https://portswigger.net/web-security"
+  },
+  {
+    name: "OWASP Juice Shop",
+    type: "Intentionally vulnerable app",
+    description: "A deliberately insecure application designed for security training. Use its official hosted demo or your own local instance.",
+    url: "https://owasp.org/www-project-juice-shop/"
+  },
+  {
+    name: "HackerOne — Programs",
+    type: "Authorized bug bounty scopes",
+    description: "Choose a program and read its scope and rules before testing any asset.",
+    url: "https://hackerone.com/opportunities"
+  },
+  {
+    name: "Bugcrowd — Programs",
+    type: "Authorized bug bounty scopes",
+    description: "Browse programs and test only assets explicitly included in the program scope.",
+    url: "https://bugcrowd.com/programs"
+  }
+];
+
+labButton.addEventListener("click", () => {
+  labResults.hidden = false;
+  labResults.innerHTML = practiceLabs.map(lab => `
+    <article class="lab-card">
+      <div><h3>${esc(lab.name)}</h3><span class="lab-type">${esc(lab.type)}</span></div>
+      <p>${esc(lab.description)}</p>
+      <a href="${esc(lab.url)}" target="_blank" rel="noopener noreferrer">Open resource ↗</a>
+    </article>
+  `).join("");
+  labButton.textContent = "Labs shown";
+  labButton.disabled = true;
+});
